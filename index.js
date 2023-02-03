@@ -1,12 +1,16 @@
-function loginwithscratch(username) {
-    var fs = require("fs");
-    var scratch = fs.readFile("https://scratch.mit.edu");
-    if(document.querySelector(".profile-name").innerHTML.search(username) > 0) {
-      console.log("Loginned with " + username + " account");
-      return true;
+function scratchauth() {
+  var scratch = "https://scratch.mit.edu/";
+  fetch(scratch)
+    .then(res => res.text())
+    .then(text => {
+      var content = text;
+    })
+    .catch(err => console.error(err));
+    this.icon = function() {
+      return content.querySelector(".profile-icon").src;
     }
-    else { 
-      console.error("Not loginned with " + username + "!");
-      return false;
+    this.username = function() {
+      return content.querySelector(".profile-name").innerHTML;
     }
+    return this;
 }
